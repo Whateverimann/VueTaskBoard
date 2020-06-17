@@ -8,15 +8,15 @@
 body,
 html {
   height: 100%;
-  background-color: #77878f;
+  background-color: #aab9bd;
 }
 
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #f0eceb;
+  color: #77878f;
   height: 100%;
 }
 </style>
