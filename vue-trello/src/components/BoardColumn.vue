@@ -1,39 +1,41 @@
 <template>
-  <div
-    class="column"
-    draggable
-    @drop="moveTaskOrColumn($event, column.tasks, columnIndex)"
-    @dragover.prevent
-    @dragenter.prevent
-    @dragstart.self="pickupColumn($event, columnIndex)"
-  >
-    <div class="column_name">{{ column.name }}</div>
-    <div class="list-reset">
-      <ColumnTask
-        v-for="(task, $taskIndex) of column.tasks"
-        :key="$taskIndex"
-        :task="task"
-        :taskIndex="$taskIndex"
-        :column="column"
-        :columnIndex="columnIndex"
-        :board="board"
-      />
-      <input
-        type="text"
-        placeholder="+ Enter new task"
-        class="input_add_element"
-        @keyup.enter="createTask($event, column.tasks)"
-      />
-    </div>
-  </div>
+  <AppDrop @drop="moveTaskOrColumn">
+    <AppDrag :transferData="{
+        type: 'column',
+        fromColumnIndex: columnIndex
+      }">
+      <div class="column">
+        <div class="column_name">{{ column.name }}</div>
+        <div class="list-reset">
+          <ColumnTask
+            v-for="(task, $taskIndex) of column.tasks"
+            :key="$taskIndex"
+            :task="task"
+            :taskIndex="$taskIndex"
+            :column="column"
+            :columnIndex="columnIndex"
+            :board="board"
+          />
+          <input
+            type="text"
+            placeholder="+ Enter new task"
+            class="input_add_element"
+            @keyup.enter="createTask($event, column.tasks)"
+          />
+        </div>
+      </div>
+    </AppDrag>
+  </AppDrop>
 </template>
 
 <script>
 import ColumnTask from '../components/ColumnTask'
+import AppDrag from '../components/AppDrag'
+import AppDrop from '../components/AppDrop'
 import movingTasksAndColumnsMixin from '../mixins/movingTasksAndColumnsMixin'
 
 export default {
-  components: { ColumnTask },
+  components: { ColumnTask, AppDrag, AppDrop },
   mixins: [movingTasksAndColumnsMixin],
   methods: {
     createTask(e, tasks) {
@@ -43,9 +45,6 @@ export default {
       })
       e.target.value = ''
     },
-    // goToTask(task) {
-    //   this.$router.push({ name: 'task', params: { id: task.id } })
-    // },
     pickupColumn(e, fromColumnIndex) {
       e.dataTransfer.effectAllowed = 'move'
       e.dataTransfer.dropEffect = 'move'
@@ -53,14 +52,6 @@ export default {
       e.dataTransfer.setData('from-column-index', fromColumnIndex)
       e.dataTransfer.setData('type', 'column')
     }
-    // pickupTask(e, taskIndex, fromColumnIndex) {
-    //   e.dataTransfer.effectAllowed = 'move'
-    //   e.dataTransfer.dropEffect = 'move'
-
-    //   e.dataTransfer.setData('from-task-index', taskIndex)
-    //   e.dataTransfer.setData('from-column-index', fromColumnIndex)
-    //   e.dataTransfer.setData('type', 'task')
-    // },
   }
 }
 </script>
