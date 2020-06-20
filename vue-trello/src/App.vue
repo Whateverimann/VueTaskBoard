@@ -9,6 +9,8 @@ body,
 html {
   height: 100%;
   background-color: #aab9bd;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 #app {
