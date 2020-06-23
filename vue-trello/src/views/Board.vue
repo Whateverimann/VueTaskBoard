@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="task-bg" v-if="isTaskOpen" @click.self="closeTask">
+    <div class="task-bg" v-if="isTaskOpen" @click.self="closeTask" @keyup.enter="closeTask">
       <router-view />
     </div>
   </div>
@@ -66,24 +66,6 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
 }
-
-/* .task {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  flex-wrap: wrap;
-  margin: 5px 0;
-  border-radius: 5px;
-  background-color: #cccaca;
-  padding: 10px;
-  font-weight: bold;
-  box-shadow: 0px 0px 40px -33px rgba(0, 0, 0, 0.75);
-}
-.description {
-  font-size: 12px;
-  font-weight: normal;
-  margin: 5px 0;
-} */
 .task-bg {
   height: 100%;
   position: absolute;
@@ -99,10 +81,27 @@ export default {
   background-color: transparent;
   border: none;
   display: block;
-  width: 100%;
+  width: 440px;
   height: 40px;
   font-weight: inherit;
   font: inherit;
   font-size: 15px;
+}
+.delete_button {
+  color: red;
+  align-self: flex-end;
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s;
+}
+.delete_button:focus {
+  outline: none;
+}
+.delete_button:hover {
+  transform: scale(1.1);
+}
+.delete_button svg {
+  font-size: 18px;
+  cursor: pointer;
 }
 </style>

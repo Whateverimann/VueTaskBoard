@@ -8,8 +8,7 @@
 body,
 html {
   height: 100%;
-  background-color: #aab9bd;
-  overflow-x: scroll;
+  background-color: #dee8eb;
   overflow-y: hidden;
 }
 
@@ -18,7 +17,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #77878f;
+  color: #474346;
   height: 100%;
 }
 </style>

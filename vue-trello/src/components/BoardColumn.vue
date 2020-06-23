@@ -5,7 +5,12 @@
         fromColumnIndex: columnIndex
       }">
       <div class="column">
-        <div class="column_name">{{ column.name }}</div>
+        <div class="column_name">
+          {{ column.name }}
+          <button @click="deleteColumn(columnIndex)" class="delete_button">
+            <AppIcon icon="times" />
+          </button>
+        </div>
         <div class="list-reset">
           <ColumnTask
             v-for="(task, $taskIndex) of column.tasks"
@@ -45,12 +50,10 @@ export default {
       })
       e.target.value = ''
     },
-    pickupColumn(e, fromColumnIndex) {
-      e.dataTransfer.effectAllowed = 'move'
-      e.dataTransfer.dropEffect = 'move'
-
-      e.dataTransfer.setData('from-column-index', fromColumnIndex)
-      e.dataTransfer.setData('type', 'column')
+    deleteColumn(columnIndex) {
+      this.$store.commit('DELETE_COLUMN', {
+        columnIndex
+      })
     }
   }
 }
@@ -60,7 +63,7 @@ export default {
 .column {
   display: flex;
   flex-direction: column;
-  background-color: #f0eceb;
+  background-color: #a6c4c7;
   margin: 10px;
   padding: 8px;
   border-radius: 5px;
@@ -70,9 +73,10 @@ export default {
 }
 .column_name {
   display: flex;
-  justify-items: center;
+  justify-content: space-between;
   margin-bottom: 2px;
   font-weight: bold;
   padding: 5px;
+  text-transform: uppercase;
 }
 </style>

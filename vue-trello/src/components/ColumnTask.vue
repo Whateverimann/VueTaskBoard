@@ -8,7 +8,16 @@
       }"
     >
       <div class="task" @click="goToTask(task)">
-        <span>{{ task.name }}</span>
+        <span>
+          {{ task.name }}
+          <button
+            @click.stop="deleteTask(columnIndex, taskIndex)"
+            class="delete_button"
+          >
+            <AppIcon icon="times" />
+          </button>
+        </span>
+
         <p v-if="task.description" class="description">{{ task.description }}</p>
       </div>
     </AppDrag>
@@ -36,15 +45,15 @@ export default {
   methods: {
     goToTask(task) {
       this.$router.push({ name: 'task', params: { id: task.id } })
-    }
-    // pickupTask(e, taskIndex, fromColumnIndex) {
-    //   e.dataTransfer.effectAllowed = 'move'
-    //   e.dataTransfer.dropEffect = 'move'
+    },
+    deleteTask(fromColumnIndex, taskIndex) {
+      const fromTasks = this.board.columns[fromColumnIndex].tasks
 
-    //   e.dataTransfer.setData('from-task-index', taskIndex)
-    //   e.dataTransfer.setData('from-column-index', fromColumnIndex)
-    //   e.dataTransfer.setData('type', 'task')
-    // }
+      this.$store.commit('DELETE_TASK', {
+        fromTasks,
+        taskIndex
+      })
+    }
   }
 }
 </script>
@@ -53,14 +62,19 @@ export default {
 .task {
   display: flex;
   flex-direction: column;
-  text-align: start;
+  text-align: left;
   flex-wrap: wrap;
   margin: 5px 0;
   border-radius: 5px;
-  background-color: #cccaca;
+  background-color: #e3e2e1;
   padding: 10px;
   font-weight: bold;
   box-shadow: 0px 0px 40px -33px rgba(0, 0, 0, 0.75);
+}
+.task span {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .description {
   font-size: 12px;
