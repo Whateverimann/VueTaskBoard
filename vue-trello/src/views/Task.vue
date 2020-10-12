@@ -8,10 +8,11 @@
         @change="updateTaskProperty($event, 'name')"
       />
       <textarea
+        placeholder="Add task description"
         class="description textarea"
-        v-if="task.description"
         :value="task.description"
         @change="updateTaskProperty($event, 'description')"
+        @keyup.enter="updateTaskProperty($event, 'description')"
       />
     </div>
   </div>
@@ -45,7 +46,7 @@ export default {
   margin: auto;
   text-align: left;
   background-color: #f0e4dd;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .task_modal {
   width: 700px;
@@ -64,8 +65,9 @@ export default {
 }
 .textarea {
   background-color: transparent;
+  border-radius: 10px;
   border: none;
-  margin: 20px;
+  margin: 10px;
   font: inherit;
   font-size: 14px;
   padding: 10px;

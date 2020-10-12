@@ -18,7 +18,9 @@
           </button>
         </span>
 
-        <p v-if="task.description" class="description">{{ task.description }}</p>
+        <p v-if="task.description" class="description">
+          {{ task.description }}
+        </p>
       </div>
     </AppDrag>
   </AppDrop>
@@ -65,8 +67,8 @@ export default {
   text-align: left;
   flex-wrap: wrap;
   margin: 5px 0;
-  border-radius: 5px;
-  background-color: #e3e2e1;
+  border-radius: 10px;
+  background-color: #f8e6d7;
   padding: 10px;
   font-weight: bold;
   box-shadow: 0px 0px 40px -33px rgba(0, 0, 0, 0.75);

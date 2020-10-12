@@ -1,9 +1,11 @@
 <template>
   <AppDrop @drop="moveTaskOrColumn">
-    <AppDrag :transferData="{
+    <AppDrag
+      :transferData="{
         type: 'column',
         fromColumnIndex: columnIndex
-      }">
+      }"
+    >
       <div class="column">
         <div class="column_name">
           {{ column.name }}
@@ -63,10 +65,10 @@ export default {
 .column {
   display: flex;
   flex-direction: column;
-  background-color: #a6c4c7;
+  background-color: #f8f8f8;
   margin: 10px;
   padding: 8px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 40px -33px rgba(0, 0, 0, 0.75);
   height: 100%;
   min-width: 440px;
@@ -77,6 +79,7 @@ export default {
   margin-bottom: 2px;
   font-weight: bold;
   padding: 5px;
+  color: #f8a861;
   text-transform: uppercase;
 }
 </style>

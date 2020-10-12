@@ -1,5 +1,6 @@
 <template>
   <div class="board">
+    <h1 class="title"><AppIcon icon="list-alt" /> Simple Task Board</h1>
     <div class="flex">
       <BoardColumn
         v-for="(column, $columnIndex) of board.columns"
@@ -12,7 +13,7 @@
       <div class="column">
         <input
           type="text"
-          class="input_add_element"
+          class="input_add_element add-column"
           placeholder="+ Add new column"
           v-model="newColumnName"
           @keyup.enter="createColumn"
@@ -20,7 +21,12 @@
       </div>
     </div>
 
-    <div class="task-bg" v-if="isTaskOpen" @click.self="closeTask" @keyup.enter="closeTask">
+    <div
+      class="task-bg"
+      v-if="isTaskOpen"
+      @click.self="closeTask"
+      @keyup.enter="closeTask"
+    >
       <router-view />
     </div>
   </div>
@@ -103,5 +109,12 @@ export default {
 .delete_button svg {
   font-size: 18px;
   cursor: pointer;
+}
+.title {
+  color: #f8e6d5;
+}
+.add-column {
+  margin-top: 10px;
+  font-weight: 500;
 }
 </style>
