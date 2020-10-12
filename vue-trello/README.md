@@ -2,10 +2,8 @@
 
 ## General info
 
-```
 I created this app with Vue Mastery to improve my skills.
 
-### Demo
-```
+## Demo
 
 Here is working live demo:
