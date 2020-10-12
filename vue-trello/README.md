@@ -1,24 +1,11 @@
-# vue-trello
+# Simple Task Board created with Vue.js
 
-## Project setup
-```
-npm install
-```
+## General info
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
+I created this app with Vue Mastery to improve my skills.
+
+### Demo
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Here is working live demo:
